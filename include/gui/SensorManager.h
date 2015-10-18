@@ -48,7 +48,8 @@ class SensorEventQueue;
 // ----------------------------------------------------------------------------
 
 class SensorManager :
-    public ASensorManager
+    public ASensorManager,
+    public Singleton<SensorManager>
 {
 public:
     static SensorManager& getInstanceForPackage(const String16& packageName);
@@ -56,7 +57,10 @@ public:
 
     ssize_t getSensorList(Sensor const* const** list) const;
     Sensor const* getDefaultSensor(int type);
-    sp<SensorEventQueue> createEventQueue(String8 packageName = String8(""), int mode = 0);
+#if 1
+    sp<SensorEventQueue> createEventQueue();
+#endif
+    sp<SensorEventQueue> createEventQueue(String8 packageName, int mode = 0);
     bool isDataInjectionEnabled();
 
 private:
@@ -64,6 +68,9 @@ private:
     void sensorManagerDied();
 
     SensorManager(const String16& opPackageName);
+#if 1
+    SensorManager();
+#endif
     status_t assertStateLocked() const;
 
 private:
