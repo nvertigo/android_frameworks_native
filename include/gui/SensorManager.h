@@ -53,6 +53,9 @@ class SensorManager :
 {
 public:
     static SensorManager& getInstanceForPackage(const String16& packageName);
+#if 1
+    SensorManager();
+#endif
     ~SensorManager();
 
     ssize_t getSensorList(Sensor const* const** list) const;
@@ -68,9 +71,6 @@ private:
     void sensorManagerDied();
 
     SensorManager(const String16& opPackageName);
-#if 1
-    SensorManager();
-#endif
     status_t assertStateLocked() const;
 
 private:
