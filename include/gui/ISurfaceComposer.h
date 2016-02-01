@@ -157,7 +157,7 @@ public:
 //===>
 //            Rotation rotation = eRotateNone) = 0;
 //--->
->>>>>>> schischu/marshmallow-mr1-release
+//>>>>>>> schischu/marshmallow-mr1-release
 
     /* Clears the frame statistics for animations.
      *
