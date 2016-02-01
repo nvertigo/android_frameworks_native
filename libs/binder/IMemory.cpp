@@ -333,7 +333,7 @@ void BpMemoryHeap::assertReallyMapped() const
                 mBase = ion_map(fd, size, offset);
             } else
 #endif
-                mBase = mmap(0, size, access, MAP_SHARED, fd, offset);
+            mBase = mmap(0, size, access, MAP_SHARED, fd, offset);
             if (mBase == MAP_FAILED) {
                 ALOGE("cannot map BpMemoryHeap (binder=%p), size=%zd, fd=%d (%s)",
                         IInterface::asBinder(this).get(), size, fd, strerror(errno));

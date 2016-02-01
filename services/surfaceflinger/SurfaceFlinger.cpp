@@ -3566,6 +3566,14 @@ status_t SurfaceFlinger::captureScreenImplLocked(
                             } else {
                                 ALOGW("captureScreen: error creating EGL fence: %#x", eglGetError());
                             }
+						}
+                        if (useReadPixels) {
+                            sp<GraphicBuffer> buf = static_cast<GraphicBuffer*>(buffer);
+                            void* vaddr;
+                            if (buf->lock(GRALLOC_USAGE_SW_WRITE_OFTEN, &vaddr) == NO_ERROR) {
+                                getRenderEngine().readPixels(0, 0, buffer->stride, reqHeight, (uint32_t *)vaddr);
+                                buf->unlock();
+                            }
                         }
                         if (useReadPixels) {
                             sp<GraphicBuffer> buf = static_cast<GraphicBuffer*>(buffer);

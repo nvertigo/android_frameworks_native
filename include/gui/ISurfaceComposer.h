@@ -147,8 +147,17 @@ public:
             Rect sourceCrop, uint32_t reqWidth, uint32_t reqHeight,
             uint32_t minLayerZ, uint32_t maxLayerZ,
             bool useIdentityTransform,
+//<<<<<<< HEAD
             Rotation rotation = eRotateNone,
             bool isCpuConsumer = false) = 0;
+//=======
+//+++>
+//            Rotation rotation,
+//            bool isCpuConsumer) = 0;
+//===>
+//            Rotation rotation = eRotateNone) = 0;
+//--->
+>>>>>>> schischu/marshmallow-mr1-release
 
     /* Clears the frame statistics for animations.
      *

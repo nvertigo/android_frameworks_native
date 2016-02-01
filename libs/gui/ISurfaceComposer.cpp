@@ -118,6 +118,7 @@ public:
         data.writeInt32(static_cast<int32_t>(useIdentityTransform));
         data.writeInt32(static_cast<int32_t>(rotation));
         data.writeInt32(isCpuConsumer);
+        data.writeInt32(isCpuConsumer);
         remote()->transact(BnSurfaceComposer::CAPTURE_SCREEN, data, &reply);
         return reply.readInt32();
     }

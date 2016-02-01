@@ -934,6 +934,14 @@ status_t Parcel::writeDupFileDescriptor(int fd)
     return err;
 }
 
+#if 1
+//Needed by drmserver and libdrmwvmplugin.so
+status_t Parcel::writeBlob(size_t len, WritableBlob* outBlob)
+{
+    return writeBlob(len, false, outBlob);
+}
+#endif
+
 status_t Parcel::writeBlob(size_t len, bool mutableCopy, WritableBlob* outBlob)
 {
     if (len > INT32_MAX) {
